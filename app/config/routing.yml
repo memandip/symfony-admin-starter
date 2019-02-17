@@ -1,3 +1,13 @@
+main:
+    resource: "@MainBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+locality:
+    resource: "@LocalityBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
