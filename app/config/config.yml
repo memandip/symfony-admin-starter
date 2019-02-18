@@ -39,6 +39,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+        - 'bootstrap_3_layout.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -90,3 +92,16 @@ fos_user:
     registration:
         form:
             type: UserBundle\Form\UserType
+
+stof_doctrine_extensions:
+    orm:
+        # Prototype
+        default:
+            translatable:         false
+            timestampable:        true
+            sluggable:            true
+    class:
+        translatable:         Gedmo\Translatable\TranslatableListener
+        timestampable:        Gedmo\Timestampable\TimestampableListener
+        sluggable:            Gedmo\Sluggable\SluggableListener
+    default_locale:       en

@@ -16,17 +16,17 @@ trait TimestampableTrait
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="created_on", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
-    private $createdOn;
+    private $createdAt;
 
     /**
      * @var \DateTime
-     * @ORM\Column(name="updated_on", type="datetime")
+     * @ORM\Column(name="updated_at", type="datetime")
      * @Gedmo\Timestampable(on="update")
      */
-    private $updatedOn;
+    private $updatedAt;
 
     /**
      * @var int
@@ -37,33 +37,33 @@ trait TimestampableTrait
     /**
      * @return \DateTime
      */
-    public function getCreatedOn()
+    public function getCreatedAt()
     {
-        return $this->createdOn;
+        return $this->createdAt;
     }
 
     /**
-     * @param \DateTime $createdOn
+     * @param \DateTime $createdAt
      */
-    public function setCreatedOn($createdOn)
+    public function setCreatedAt($createdAt)
     {
-        $this->createdOn = $createdOn;
+        $this->createdAt = $createdAt;
     }
 
     /**
      * @return \DateTime
      */
-    public function getUpdatedOn()
+    public function getUpdatedAt()
     {
-        return $this->updatedOn;
+        return $this->updatedAt;
     }
 
     /**
-     * @param \DateTime $updatedOn
+     * @param \DateTime $updatedAt
      */
-    public function setUpdatedOn($updatedOn)
+    public function setUpdatedAt($updatedAt)
     {
-        $this->updatedOn = $updatedOn;
+        $this->updatedAt = $updatedAt;
     }
 
     /**

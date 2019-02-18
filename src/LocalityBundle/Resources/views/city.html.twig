@@ -1,0 +1,65 @@
+{% extends '@Admin/layout.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">City Form</h3>
+                </div>
+                <div class="box-body">
+                    {{ form_start(form) }}
+                    {{ form_row(form.state) }}
+                    {{ form_row(form.name) }}
+                    <input type="submit" class="btn btn-primary" value="Save">
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Cities List</h3>
+                </div>
+                <div class="box-body">
+                    {% if cities | length %}
+                        <table class="table table-condensed table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <td>SN</td>
+                                <td>Name</td>
+                                <td>Country</td>
+                                <td>State</td>
+                                <td>Actions</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for c in cities %}
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ c.name }}</td>
+                                    <td>{{ c.state ? c.state.country ? c.state.country.name : "N/A" }}</td>
+                                    <td>{{ c.state ? c.state.name : "N/A" }}</td>
+                                    <td>
+                                        <a href="{{ path('city_update',{id:c.id}) }}" class="btn btn-xs btn-primary">
+                                            Edit
+                                        </a>
+                                        <a href="{{ path('city_delete',{id:c.id}) }}"
+                                           class="btn btn-xs btn-danger delete-item">
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% else %}
+                        <div class="alert alert-info">
+                            <p>No countries available</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -29,6 +29,12 @@ class City
      */
     private $name;
 
+    /**
+     * @var State
+     * @ORM\ManyToOne(targetEntity="LocalityBundle\Entity\State")
+     */
+    private $state;
+
     use TimestampableTrait;
 
     /**
@@ -64,5 +70,27 @@ class City
     {
         return $this->name;
     }
+
+    /**
+     * @return State
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param State $state
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+    }
+
+    public function __toString()
+    {
+        return $this->name ?? "city";
+    }
+
 }
 

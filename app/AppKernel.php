@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new JMS\DiExtraBundle\JMSDiExtraBundle(),
             new JMS\AopBundle\JMSAopBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
+            new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle,
 
             new \AdminBundle\AdminBundle(),
             new \UserBundle\UserBundle(),

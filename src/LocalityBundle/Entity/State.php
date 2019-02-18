@@ -29,6 +29,12 @@ class State
      */
     private $name;
 
+    /**
+     * @var Country
+     * @ORM\ManyToOne(targetEntity="LocalityBundle\Entity\Country")
+     */
+    private $country;
+
     use TimestampableTrait;
 
     /**
@@ -64,5 +70,27 @@ class State
     {
         return $this->name;
     }
+
+    /**
+     * @return Country
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param Country $country
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+    }
+
+    public function __toString()
+    {
+        return $this->name ?? "state";
+    }
+
 }
 
