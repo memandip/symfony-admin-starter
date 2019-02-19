@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
             new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle,
+            new \Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new FOS\CKEditorBundle\FOSCKEditorBundle(),
 
             new \AdminBundle\AdminBundle(),
             new \UserBundle\UserBundle(),
