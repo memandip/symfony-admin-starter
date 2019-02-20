@@ -1,7 +1,7 @@
-main:
-    resource: "@MainBundle/Controller/"
-    type:     annotation
-    prefix:   /
+#main:
+#    resource: "@MainBundle/Controller/"
+#    type:     annotation
+#    prefix:   /
 
 locality:
     resource: "@LocalityBundle/Controller/"
