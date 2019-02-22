@@ -88,3 +88,7 @@ fos_user:
     registration:
         form:
             type: UserBundle\Form\UserType
+
+apy_breadcrumb_trail:
+#    template: APYBreadcrumbTrailBundle::breadcrumbtrail.html.twig
+    template: ::breadcrumbtrail.html.twig
