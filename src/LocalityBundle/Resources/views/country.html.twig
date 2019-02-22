@@ -1,5 +1,10 @@
 {% extends '@Admin/layout.html.twig' %}
 
+{% block page_header %} Country {% endblock %}
+{% block page_description %}
+    {{ isUpdating ? "Update" : "List" }}
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <div class="col-md-4">
@@ -10,7 +15,7 @@
                 <div class="box-body">
                     {{ form_start(form) }}
                     {{ form_row(form.name) }}
-                    <input type="submit" class="btn btn-primary" value="Save">
+                    <input type="submit" class="btn btn-primary" value="{{ isUpdating ? "Update" : "Create" }}">
                     {{ form_end(form) }}
                 </div>
             </div>

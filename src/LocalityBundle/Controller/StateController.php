@@ -7,7 +7,13 @@ use LocalityBundle\Form\StateType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 
+/**
+ * Class StateController
+ * @package LocalityBundle\Controller
+ * @Breadcrumb("State", routeName="state_list")
+ */
 class StateController extends Controller
 {
 
@@ -21,9 +27,10 @@ class StateController extends Controller
         $id = $request->get('id');
         $em = $this->getDoctrine()->getManager();
         $message = "State created.";
+        $isUpdating = false;
 
         if($id){
-            $state = $em->getRepository(State::class)->findBy([
+            $state = $em->getRepository(State::class)->findOneBy([
                 'deleted' => false,
                 'id' => $id
             ]);
@@ -31,6 +38,10 @@ class StateController extends Controller
                 return $this->redirectToRoute('state_list');
             }
             $message = "State updated.";
+            $this->get('apy_breadcrumb_trail')
+                ->add($state->getName())
+                ->add('Update');
+            $isUpdating = true;
         }   else    {
             $state = new State();
         }
@@ -48,6 +59,7 @@ class StateController extends Controller
             }
             return $this->redirectToRoute('state_list');
         }
+        $data['isUpdating'] = $isUpdating;
         $data['states'] = $em->getRepository(State::class)->findBy(['deleted' => false]);
         $data['form'] = $form->createView();
         return $this->render('@Locality/state.html.twig', $data);

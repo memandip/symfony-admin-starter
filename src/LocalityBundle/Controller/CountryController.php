@@ -7,7 +7,13 @@ use LocalityBundle\Form\CountryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 
+/**
+ * Class CountryController
+ * @package LocalityBundle\Controller
+ * @Breadcrumb("Country", routeName="country_list")
+ */
 class CountryController extends Controller
 {
 
@@ -25,6 +31,7 @@ class CountryController extends Controller
         ]);
         $message = "Country added.";
 
+        $isUpdating = false;
         if($id){
             $country = $em->getRepository(Country::class)->findOneBy([
                 'deleted' => false,
@@ -33,7 +40,10 @@ class CountryController extends Controller
             if(! $country instanceof Country){
                 return $this->redirectToRoute('country_list');
             }
+            $isUpdating = true;
             $message = "Country updated.";
+            $apy = $this->get('apy_breadcrumb_trail');
+            $apy->add($country->getName())->add('Update');
         }   else    {
             $country = new Country();
         }
@@ -52,6 +62,8 @@ class CountryController extends Controller
             }
             return $this->redirectToRoute('country_list');
         }
+
+        $data['isUpdating'] = $isUpdating;
         $data['form'] = $form->createView();
         $data['countries'] = $countries;
         return $this->render('@Locality/country.html.twig', $data);

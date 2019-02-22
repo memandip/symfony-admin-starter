@@ -7,7 +7,13 @@ use LocalityBundle\Form\CityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 
+/**
+ * Class CityController
+ * @package LocalityBundle\Controller
+ * @Breadcrumb("City", routeName="city_list")
+ */
 class CityController extends Controller
 {
 
@@ -21,8 +27,9 @@ class CityController extends Controller
         $id = $request->get('id');
         $em = $this->getDoctrine()->getManager();
         $message = "City added";
+        $isUpdating = false;
         if($id){
-            $city = $em->getRepository(City::class)->findBy([
+            $city = $em->getRepository(City::class)->findOneBy([
                 'deleted' => false,
                 'id' => $id
             ]);
@@ -30,7 +37,11 @@ class CityController extends Controller
             if(! $city instanceof City){
                 return $this->redirectToRoute('city_list');
             }
+            $isUpdating = true;
             $message = "City updated.";
+            $this->get('apy_breadcrumb_trail')
+                ->add($city->getName())
+                ->add('Update');
         }   else    {
             $city = new City();
         }
@@ -48,6 +59,7 @@ class CityController extends Controller
             return $this->redirectToRoute('city_list');
         }
 
+        $data['isUpdating'] = $isUpdating;
         $data['cities'] = $em->getRepository(City::class)->findBy(['deleted' => false]);
         $data['form'] = $form->createView();
         return $this->render('@Locality/city.html.twig', $data);
