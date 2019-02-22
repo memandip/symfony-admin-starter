@@ -4,9 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "b1f6ed93687f5c29162bea1af4796d10",
+    "content-hash": "e03b602db9910bca876ded366b1e67c8",
     "packages": [
+        {
+            "name": "apy/breadcrumbtrail-bundle",
+            "version": "v1.5",
+            "target-dir": "APY/BreadcrumbTrailBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Abhoryo/APYBreadcrumbTrailBundle.git",
+                "reference": "e294028e3bc759a7b4d96a2cc960c32bf08457d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Abhoryo/APYBreadcrumbTrailBundle/zipball/e294028e3bc759a7b4d96a2cc960c32bf08457d9",
+                "reference": "e294028e3bc759a7b4d96a2cc960c32bf08457d9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/framework-bundle": "^2.3|^3.0|^4.0"
+            },
+            "suggest": {
+                "ext-intl": "*"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "APY\\BreadcrumbTrailBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yoann Petit",
+                    "email": "abhoryo@free.fr"
+                }
+            ],
+            "description": "Symfony2 Breadcrumbs Bundle with annotations and PHP",
+            "homepage": "https://github.com/Abhoryo/APYBreadcrumbTrailBundle",
+            "keywords": [
+                "Breadcrumb Trail",
+                "annotation",
+                "breadcrumbs",
+                "fil ariane",
+                "symfony"
+            ],
+            "time": "2018-03-21T13:26:15+00:00"
+        },
         {
             "name": "behat/transliterator",
             "version": "v1.2.0",
@@ -37,41 +85,10 @@
             "autoload": {
                 "psr-0": {
                     "Behat\\Transliterator": "src/"
-=======
-    "content-hash": "45936ba879874e9c6ca24db9bf627a71",
-    "packages": [
-        {
-            "name": "apy/breadcrumbtrail-bundle",
-            "version": "v1.5",
-            "target-dir": "APY/BreadcrumbTrailBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Abhoryo/APYBreadcrumbTrailBundle.git",
-                "reference": "e294028e3bc759a7b4d96a2cc960c32bf08457d9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Abhoryo/APYBreadcrumbTrailBundle/zipball/e294028e3bc759a7b4d96a2cc960c32bf08457d9",
-                "reference": "e294028e3bc759a7b4d96a2cc960c32bf08457d9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "symfony/framework-bundle": "^2.3|^3.0|^4.0"
-            },
-            "suggest": {
-                "ext-intl": "*"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "APY\\BreadcrumbTrailBundle": ""
->>>>>>> origin/master
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-<<<<<<< HEAD
                 "Artistic-1.0"
             ],
             "description": "String transliterator",
@@ -81,26 +98,6 @@
                 "transliterator"
             ],
             "time": "2017-04-04T11:38:05+00:00"
-=======
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Yoann Petit",
-                    "email": "abhoryo@free.fr"
-                }
-            ],
-            "description": "Symfony2 Breadcrumbs Bundle with annotations and PHP",
-            "homepage": "https://github.com/Abhoryo/APYBreadcrumbTrailBundle",
-            "keywords": [
-                "Breadcrumb Trail",
-                "annotation",
-                "breadcrumbs",
-                "fil ariane",
-                "symfony"
-            ],
-            "time": "2018-03-21T13:26:15+00:00"
->>>>>>> origin/master
         },
         {
             "name": "composer/ca-bundle",

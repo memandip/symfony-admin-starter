@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle,
             new \Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new FOS\CKEditorBundle\FOSCKEditorBundle(),
+            new \APY\BreadcrumbTrailBundle\APYBreadcrumbTrailBundle(),
 
             new \AdminBundle\AdminBundle(),
             new \UserBundle\UserBundle(),
