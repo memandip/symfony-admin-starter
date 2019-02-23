@@ -23,11 +23,13 @@ class AppKernel extends Kernel
             new \Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new FOS\CKEditorBundle\FOSCKEditorBundle(),
             new \APY\BreadcrumbTrailBundle\APYBreadcrumbTrailBundle(),
+            new Oneup\UploaderBundle\OneupUploaderBundle(),
 
             new \AdminBundle\AdminBundle(),
             new \UserBundle\UserBundle(),
             new LocalityBundle\LocalityBundle(),
             new MainBundle\MainBundle(),
+            new UploaderBundle\UploaderBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

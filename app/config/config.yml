@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@MainBundle/Resources/config/services.yml" }
+    - { resource: "@UploaderBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -124,3 +125,8 @@ knp_paginator:
 apy_breadcrumb_trail:
 #    template: APYBreadcrumbTrailBundle::breadcrumbtrail.html.twig
     template: ::breadcrumbtrail.html.twig
+
+oneup_uploader:
+    mappings:
+        file:
+            frontend: dropzone

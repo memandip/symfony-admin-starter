@@ -1,0 +1,79 @@
+{% extends '@Admin/layout.html.twig' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ asset('assets/css/basic.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/dropzone.css') }}">
+{% endblock %}
+
+{% block page_header %} File Uploader {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-4">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Upload form</h3>
+                </div>
+                <div class="box-body">
+                    <form action="" id="fileUpload" enctype="multipart/form-data" class="dropzone"></form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="box box-info">
+                <div class="box-header with-border">Images List</div>
+                <div class="box-body">
+                    {% if files | length %}
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>SN</th>
+                            <th>Name</th>
+                            <th>Mimetype</th>
+                            <th>File</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        {% for file in files %}
+                            <tr>
+                                <td>{{ loop.index }}</td>
+                                <td>{{ file.filename }}</td>
+                                <td>{{ file.mimeType }}</td>
+                                <td>
+                                    <img src="{{ file.fileUrl }}" alt="" style="height: auto; width: 100px;">
+                                </td>
+                                <td>
+                                    <a href="{{ path('media_file_delete',{id:file.id}) }}"
+                                       class="btn btn-xs btn-danger delete-item">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {% else %}
+                        <div class="col-md-12">
+                            <div class="alert alert-info">No media files available.</div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ asset('assets/js/dropzone.js') }}"></script>
+
+    <script>
+        Dropzone.autoDiscover = false;
+        var url = "{{ oneup_uploader_endpoint('file') }}";
+        var myDropzone = new Dropzone("form#fileUpload", {
+            url: url
+        });
+        myDropzone.on('complete', function (file) {
+            myDropzone.removeFile(file);
+        });
+    </script>
+
+{% endblock %}

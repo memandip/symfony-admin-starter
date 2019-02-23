@@ -57,6 +57,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main content -->
         <section class="content container-fluid">
 
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {% for message in app.flashes('error') %}
+                <div class="alert alert-error">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
             {% block content %} {% endblock %}
 
         </section>
