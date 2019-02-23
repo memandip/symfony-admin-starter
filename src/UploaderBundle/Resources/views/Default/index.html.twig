@@ -3,9 +3,16 @@
 {% block head %}
     <link rel="stylesheet" href="{{ asset('assets/css/basic.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/dropzone.css') }}">
+    <style>
+        .dropzone, .media-wrapper-box{
+            height: 400px !important;
+            overflow-y: scroll;
+        }
+    </style>
 {% endblock %}
 
-{% block page_header %} File Uploader {% endblock %}
+{% block page_header %} Medias {% endblock %}
+{% block page_description %} List {% endblock %}
 
 {% block content %}
     <div class="row">
@@ -15,35 +22,52 @@
                     <h3 class="box-title">Upload form</h3>
                 </div>
                 <div class="box-body">
-                    <form action="" id="fileUpload" enctype="multipart/form-data" class="dropzone"></form>
+                    <form id="fileUpload" enctype="multipart/form-data" class="dropzone"></form>
                 </div>
             </div>
         </div>
         <div class="col-md-8">
             <div class="box box-info">
-                <div class="box-header with-border">Images List</div>
-                <div class="box-body">
-                    {% if files | length %}
-                    <table class="table table-bordered table-hover">
+                <div class="box-header with-border">Medias List</div>
+                <div class="box-body media-wrapper-box">
+                    {% if medias | length %}
+                    <table class="table table-bordered table-hover media-list">
                         <thead>
                         <tr>
                             <th>SN</th>
                             <th>Name</th>
-                            <th>Mimetype</th>
+                            <th>Details</th>
                             <th>File</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
-                        {% for file in files %}
+                        {% for media in medias %}
                             <tr>
                                 <td>{{ loop.index }}</td>
-                                <td>{{ file.filename }}</td>
-                                <td>{{ file.mimeType }}</td>
+                                <td>{{ media.filename }}</td>
                                 <td>
-                                    <img src="{{ file.fileUrl }}" alt="" style="height: auto; width: 100px;">
+                                    <span>
+                                        <strong>Caption: </strong>
+                                        {{ media.caption }}
+                                    </span>
+                                    <br>
+                                    <span>
+                                        <strong>Description: </strong>
+                                        {{ media.description }}
+                                    </span>
                                 </td>
                                 <td>
-                                    <a href="{{ path('media_file_delete',{id:file.id}) }}"
+                                    <a href="{{ media.fileUrl }}">
+                                        <img src="{{ media.fileUrl }}" alt="" style="height: auto; width: 100px;">
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#"
+                                       data-media-id="{{ media.id }}"
+                                       class="btn btn-success btn-xs media-update-btn">
+                                        Edit
+                                    </a>
+                                    <a href="{{ path('media_file_delete',{id:media.id}) }}"
                                        class="btn btn-xs btn-danger delete-item">
                                         Delete
                                     </a>
@@ -68,12 +92,39 @@
     <script>
         Dropzone.autoDiscover = false;
         var url = "{{ oneup_uploader_endpoint('file') }}";
-        var myDropzone = new Dropzone("form#fileUpload", {
-            url: url
+        new Dropzone("form#fileUpload", {
+            url: url,
+            uploadMultiple:true,
+            success: function(file, response){
+                console.log('file, response',file, response);
+            },
+            complete:function(file){
+              this.removeFile(file);
+            },
+            queuecomplete:function(){
+                window.location.href = '';
+            },
         });
-        myDropzone.on('complete', function (file) {
-            myDropzone.removeFile(file);
-        });
+
+        $('.media-list').on('click','.media-update-btn', function(e){
+            e.preventDefault();
+            var modal = $('#commonModal');
+            console.log(modal);
+            var mediaId = $(this).data('media-id');
+            var url = "{{ path('media_file_update',{id:'MEDIA_ID'}) }}";
+            url = url.replace(/MEDIA_ID/,mediaId);
+            $.ajax({
+                url:url,
+                success:function(data){
+                    if(data && data.success){
+                        modal.find('.modal-title').html('Update media');
+                        modal.find('.modal-body').html(data.template);
+                        modal.modal('toggle');
+                    }
+                }
+            })
+        })
+
     </script>
 
 {% endblock %}

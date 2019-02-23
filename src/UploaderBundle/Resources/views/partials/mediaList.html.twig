@@ -1,0 +1,24 @@
+{% if media is defined %}
+    <tr>
+        <td>
+            <img src="{{ asset(media.fileUrl) }}"
+                 style="height: auto; width: 100px;" alt="{{ media.caption }}">
+        </td>
+        <td>
+            <p>
+                <strong>Caption: </strong>
+                <br>
+                {{ media.caption }}
+            </p>
+            <p>
+                <strong>Description: </strong>
+                <br>
+                {{ media.description }}
+            </p>
+        </td>
+        <td>
+            <button class="btn btn-primary btn-xs edit" data-media-id="{{ i.id }}">Edit</button>
+            <button class="btn btn-danger btn-xs delete" data-media-id="{{ i.id }}">Delete</button>
+        </td>
+    </tr>
+{% endif %}

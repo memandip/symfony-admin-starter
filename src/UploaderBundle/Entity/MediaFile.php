@@ -36,12 +36,23 @@ class MediaFile
 
     /**
      * @var string
+     * @ORM\Column(name="caption", type="string", nullable=true)
+     */
+    private $caption;
+
+    /**
+     * @var string
+     * @ORM\Column(name="description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
      * @ORM\Column(name="mime_type", type="string")
      */
     private $mimeType;
 
     use TimestampableTrait;
-
 
     /**
      * Get id.
@@ -99,6 +110,38 @@ class MediaFile
     public function setMimeType($mimeType)
     {
         $this->mimeType = $mimeType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCaption()
+    {
+        return $this->caption;
+    }
+
+    /**
+     * @param string $caption
+     */
+    public function setCaption($caption)
+    {
+        $this->caption = $caption;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 
 }
