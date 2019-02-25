@@ -24,11 +24,32 @@
                     </li>
                 </ul>
             </li>
+
+            {% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
+                <li class="treeview  {% if routeName == "users_list" or routeName == "user_create" %} active {% endif %}">
+                    <a href="#">
+                        <i class="fa fa-user"></i> <span>User</span>
+                        <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li {% if routeName == "users_list" %} class="active" {% endif %}>
+                            <a href="{{ path('users_list') }}"><i class="fa fa-circle-o"></i> List</a>
+                        </li>
+                        <li {% if routeName == "user_create" %} class="active" {% endif %}>
+                            <a href="{{ path('user_create') }}"><i class="fa fa-circle-o"></i> Create</a>
+                        </li>
+                    </ul>
+                </li>
+            {% endif %}
+
             <li {% if routeName == 'media_files_list' %} class="active" {% endif %}>
                 <a href="{{ path('media_files_list') }}">
                     Medias
                 </a>
             </li>
+
         </ul>
         <!-- /.sidebar-menu -->
     </section>

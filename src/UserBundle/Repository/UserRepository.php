@@ -2,6 +2,8 @@
 
 namespace UserBundle\Repository;
 
+use UserBundle\Entity\User;
+
 /**
  * UserRepository
  *
@@ -10,4 +12,13 @@ namespace UserBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function getUsersQuery($filters = []){
+        $qb = $this->_em->createQueryBuilder();
+         $qb->select('u')
+             ->from(User::class,'u');
+
+        return $qb->getQuery();
+    }
+
 }
