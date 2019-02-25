@@ -17,6 +17,7 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $isUpdating = $options['isUpdating'] ?? false;
         $builder
             ->add('firstName', TextType::class, [
                 'required' => true,
@@ -48,6 +49,7 @@ class UserType extends AbstractType
             ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
+                'required' => !$isUpdating,
                 'options' => [
                     'attr' => [
                         'class' => 'form-control',
@@ -55,14 +57,16 @@ class UserType extends AbstractType
                     ],
                 ],
                 'first_options' => [
-                    'required' => true,
+                    'required' => !$isUpdating,
+                    'label' => 'Password',
                     'attr' => [
                         'class' => 'form-control',
                         'placeholder' => 'Password'
                     ]
                 ],
                 'second_options' => [
-                    'required' => true,
+                    'required' => !$isUpdating,
+                    'label' => 'Repeat Password',
                     'attr' => [
                         'class' => 'form-control',
                         'placeholder' => 'Repeat password'
@@ -79,7 +83,8 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'UserBundle\Entity\User'
+            'data_class' => 'UserBundle\Entity\User',
+            'isUpdating' => false
         ));
     }
 
