@@ -1,6 +1,6 @@
 <?php
 
-namespace UploaderBundle\Entity;
+namespace MediaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use MainBundle\Traits\TimestampableTrait;
@@ -9,7 +9,7 @@ use MainBundle\Traits\TimestampableTrait;
  * File
  *
  * @ORM\Table(name="media_file")
- * @ORM\Entity(repositoryClass="UploaderBundle\Repository\MediaFileRepository")
+ * @ORM\Entity(repositoryClass="MediaBundle\Repository\MediaFileRepository")
  */
 class MediaFile
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace UploaderBundle\Form;
+namespace MediaBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,7 +22,7 @@ class MediaFileType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'UploaderBundle\Entity\MediaFile'
+            'data_class' => 'MediaBundle\Entity\MediaFile'
         ));
     }
 

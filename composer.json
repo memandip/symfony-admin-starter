@@ -25,6 +25,7 @@
     "require": {
         "php": ">=5.5.9",
         "apy/breadcrumbtrail-bundle": "^1.5",
+        "dmishh/settings-bundle": "2.0.*@dev",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
         "friendsofsymfony/ckeditor-bundle": "^2.0",

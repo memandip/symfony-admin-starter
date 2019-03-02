@@ -1,6 +1,6 @@
 <?php
 
-namespace UploaderBundle\Repository;
+namespace MediaBundle\Repository;
 
 /**
  * FileRepository

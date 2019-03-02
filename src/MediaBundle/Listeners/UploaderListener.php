@@ -6,10 +6,10 @@
  * Time: 5:14 PM
  */
 
-namespace UploaderBundle\Listeners;
+namespace MediaBundle\Listeners;
 
 use Doctrine\ORM\EntityManager;
-use UploaderBundle\Entity\MediaFile;
+use MediaBundle\Entity\MediaFile;
 use JMS\DiExtraBundle\Annotation as DI;
 use Oneup\UploaderBundle\Event\PostPersistEvent;
 

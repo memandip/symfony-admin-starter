@@ -103,7 +103,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
     $('.delete-item').on('click', function (e) {
         e.preventDefault();
-        var c = confirm('Are you sure');
+        var c = confirm('Are you sure ?');
         if (c) {
             location.href = $(e.target).attr('href');
         }

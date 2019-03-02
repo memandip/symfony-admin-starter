@@ -1,9 +1,9 @@
 <?php
 
-namespace UploaderBundle\Controller;
+namespace MediaBundle\Controller;
 
-use UploaderBundle\Entity\MediaFile;
-use UploaderBundle\Form\MediaFileType;
+use MediaBundle\Entity\MediaFile;
+use MediaBundle\Form\MediaFileType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
@@ -24,7 +24,7 @@ class DefaultController extends Controller
     public function indexAction()
     {
         $data['medias'] = $this->getDoctrine()->getManager()->getRepository(MediaFile::class)->findAll();
-        return $this->render('UploaderBundle:Default:index.html.twig', $data);
+        return $this->render('MediaBundle:Default:index.html.twig', $data);
     }
 
     /**
@@ -90,7 +90,7 @@ class DefaultController extends Controller
             return $this->redirectToRoute('media_files_list');
         }   else    {
             $data['form'] = $form->createView();
-            $response['template'] = $this->renderView('@Uploader/Default/form.html.twig', $data);
+            $response['template'] = $this->renderView('@Media/Default/form.html.twig', $data);
         }
         $response['success'] = true;
         return new JsonResponse($response);
@@ -104,7 +104,7 @@ class DefaultController extends Controller
     public function renderMedias(Request $request)
     {
         $data['medias'] = $this->getDoctrine()->getManager()->getRepository(MediaFile::class)->findAll();
-        $template = $this->renderView('@Uploader/partials/mediaList.html.twig', $data);
+        $template = $this->renderView('@Media/partials/mediaList.html.twig', $data);
         return new JsonResponse([
             'success' => true,
             'template' => $template

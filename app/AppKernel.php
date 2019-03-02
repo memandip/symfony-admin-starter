@@ -29,7 +29,7 @@ class AppKernel extends Kernel
             new \UserBundle\UserBundle(),
             new LocalityBundle\LocalityBundle(),
             new MainBundle\MainBundle(),
-            new UploaderBundle\UploaderBundle(),
+            new MediaBundle\MediaBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
