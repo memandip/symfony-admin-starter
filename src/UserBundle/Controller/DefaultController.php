@@ -57,11 +57,8 @@ class DefaultController extends Controller
     public function userListAction(Request $request){
         $this->denyAccessUnlessGranted('ROLE_SUPER_ADMIN');
         $em = $this->getDoctrine()->getManager();
-        $usersQuery = $em->getRepository(User::class)->getUsersQuery();
-        $users = $this->get('knp_paginator')->paginate(
-            $usersQuery,
-            $request->get('page') ?? 1,
-            20
+        $users = $this->get('service.pagination')->paginate(
+            $em->getRepository(User::class)->getUsersQuery()
         );
         return $this->render('@User/Default/list.html.twig', compact('users'));
     }
