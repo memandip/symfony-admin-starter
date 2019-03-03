@@ -3,10 +3,15 @@
 {% block head %}
     <link rel="stylesheet" href="{{ asset('assets/css/basic.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/dropzone.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/lightgallery.min.css') }}">
     <style>
         .dropzone, .media-wrapper-box{
             height: 400px !important;
             overflow-y: scroll;
+        }
+        .lightgallery img{
+            height: auto;
+            width: 100px;
         }
     </style>
 {% endblock %}
@@ -56,9 +61,9 @@
                                         {{ media.description }}
                                     </span>
                                 </td>
-                                <td>
+                                <td class="lightgallery">
                                     <a href="{{ media.fileUrl }}">
-                                        <img src="{{ media.fileUrl }}" alt="" style="height: auto; width: 100px;">
+                                        <img src="{{ media.fileUrl }}" alt="{{ media.filename }}">
                                     </a>
                                 </td>
                                 <td>
@@ -88,6 +93,7 @@
 
 {% block scripts %}
     <script src="{{ asset('assets/js/dropzone.js') }}"></script>
+    <script src="{{ asset('assets/js/lightgallery-all.min.js') }}"></script>
 
     <script>
         Dropzone.autoDiscover = false;
@@ -123,7 +129,11 @@
                     }
                 }
             })
-        })
+        });
+
+        $(document).ready(function(){
+            $('.lightgallery').lightGallery();
+        });
 
     </script>
 
