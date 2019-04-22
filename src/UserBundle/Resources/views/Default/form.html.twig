@@ -6,15 +6,16 @@
 {% endblock %}
 
 {% block content %}
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box">
-                <div class="box-body">
-                    {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    <input type="submit" value="{{ isUpdating ? "Update" : "Create" }}" class="btn btn-primary pull-right">
-                    {{ form_end(form) }}
+    <div class="well">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-body">
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <input type="submit" value="{{ isUpdating ? "Update" : "Create" }}" class="btn btn-primary pull-right">
+                        {{ form_end(form) }}
+                    </div>
                 </div>
             </div>
         </div>

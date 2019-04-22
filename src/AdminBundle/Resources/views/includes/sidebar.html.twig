@@ -1,57 +1,74 @@
-<!-- Left side column. contains the logo and sidebar -->
-<aside class="main-sidebar">
+<div class="sidebar sidebar-main sidebar-default">
     {% set routeName = app.request.get('_route') %}
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu" data-widget="tree">
-            <li class="treeview  {% if routeName == "country_list" or routeName == "state_list" or routeName == "city_list" %} active {% endif %}">
-                <a href="#">
-                    <i class="fa fa-share"></i> <span>Locality</span>
-                    <span class="pull-right-container">
+    <div class="sidebar-content">
+
+        <!-- Main navigation -->
+        <div class="sidebar-category sidebar-category-visible">
+            <div class="category-title h6">
+                <span>Main navigation</span>
+                <ul class="icons-list">
+                    <li><a href="#" data-action="collapse"></a></li>
+                </ul>
+            </div>
+
+            <div class="category-content no-padding">
+                <ul class="navigation navigation-main navigation-accordion">
+
+                    <!-- Main -->
+                    <li class="navigation-header">
+                        <span>Main</span>
+                        <i class="icon-menu" title="Main pages"></i>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_dashboard') }}">
+                            <i class="icon-home4"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="icon-stack2"></i> <span>Locality</span></a>
+                        <ul>
+                            <li {% if routeName == "country_list" %} class="active" {% endif %}>
+                                <a href="{{ path('country_list') }}"><i class="fa fa-circle-o"></i> Country</a>
+                            </li>
+                            <li {% if routeName == "state_list" %} class="active" {% endif %}>
+                                <a href="{{ path('state_list') }}"><i class="fa fa-circle-o"></i> State</a>
+                            </li>
+                            <li {% if routeName == "city_list" %} class="active" {% endif %}>
+                                <a href="{{ path('city_list') }}"><i class="fa fa-circle-o"></i> City</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- /main -->
+                    {% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
+                        <li class="treeview  {% if routeName == "users_list" or routeName == "user_create" %} active {% endif %}">
+                            <a href="#">
+                                <i class="icon icon-user"></i> <span>User</span>
+                                <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li {% if routeName == "country_list" %} class="active" {% endif %}>
-                        <a href="{{ path('country_list') }}"><i class="fa fa-circle-o"></i> Country</a>
-                    </li>
-                    <li {% if routeName == "state_list" %} class="active" {% endif %}>
-                        <a href="{{ path('state_list') }}"><i class="fa fa-circle-o"></i> State</a>
-                    </li>
-                    <li {% if routeName == "city_list" %} class="active" {% endif %}>
-                        <a href="{{ path('city_list') }}"><i class="fa fa-circle-o"></i> City</a>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li {% if routeName == "users_list" %} class="active" {% endif %}>
+                                    <a href="{{ path('users_list') }}"><i class="fa fa-circle-o"></i> List</a>
+                                </li>
+                                <li {% if routeName == "user_create" %} class="active" {% endif %}>
+                                    <a href="{{ path('user_create') }}"><i class="fa fa-circle-o"></i> Create</a>
+                                </li>
+                            </ul>
+                        </li>
+                    {% endif %}
+
+                    <li {% if routeName == 'media_files_list' %} class="active" {% endif %}>
+                        <a href="{{ path('media_files_list') }}">
+                            <i class="icon icon-file-media"></i>
+                            <span>Medias</span>
+                        </a>
                     </li>
                 </ul>
-            </li>
+            </div>
+        </div>
+        <!-- /main navigation -->
 
-            {% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
-                <li class="treeview  {% if routeName == "users_list" or routeName == "user_create" %} active {% endif %}">
-                    <a href="#">
-                        <i class="fa fa-user"></i> <span>User</span>
-                        <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li {% if routeName == "users_list" %} class="active" {% endif %}>
-                            <a href="{{ path('users_list') }}"><i class="fa fa-circle-o"></i> List</a>
-                        </li>
-                        <li {% if routeName == "user_create" %} class="active" {% endif %}>
-                            <a href="{{ path('user_create') }}"><i class="fa fa-circle-o"></i> Create</a>
-                        </li>
-                    </ul>
-                </li>
-            {% endif %}
-
-            <li {% if routeName == 'media_files_list' %} class="active" {% endif %}>
-                <a href="{{ path('media_files_list') }}">
-                    Medias
-                </a>
-            </li>
-
-        </ul>
-        <!-- /.sidebar-menu -->
-    </section>
-    <!-- /.sidebar -->
-</aside>
+    </div>
+</div>

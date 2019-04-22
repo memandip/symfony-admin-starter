@@ -4,14 +4,14 @@
 {% block page_description %} List {% endblock %}
 
 {% block content %}
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box">
-                <div class="box-body">
-                    {% if users | length %}
-                        <table class="table table-bordered table-hover">
-                            <thead>
+    <div class="well">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-body">
+                        {% if users | length %}
+                            <table class="table table-bordered table-hover">
+                                <thead>
                                 <tr>
                                     <th>SN</th>
                                     <th>Full name</th>
@@ -19,42 +19,42 @@
                                     <th>Username</th>
                                     <th>Actions</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                            {% for user in users %}
-                            <tr>
-                                <td>{{ loop.index }}</td>
-                                <td>
-                                    {{ user.firstName ~ ' ' ~  user.lastName }}
-                                    {{ user.id == app.user.id ? " (You)" : "" }}
-                                </td>
-                                <td>{{ user.email }}</td>
-                                <td>{{ user.username }}</td>
-                                <td>
-                                    {% if app.user.id != user.id %}
-                                        <a href="{{ path('user_update',{id:user.id}) }}" class="btn btn-success btn-xs">
-                                            Edit
-                                        </a>
-                                        <a href="{{ path('user_delete',{id:user.id}) }}" class="btn btn-danger btn-xs">
-                                            Delete
-                                        </a>
-                                    {% endif %}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                        {{ knp_pagination_render(users) }}
-                    {% else %}
-                        <div class="col-md-12">
-                            <div class="alert alert-info">
-                                No users available.
+                                </thead>
+                                <tbody>
+                                {% for user in users %}
+                                    <tr>
+                                        <td>{{ loop.index }}</td>
+                                        <td>
+                                            {{ user.firstName ~ ' ' ~  user.lastName }}
+                                            {{ user.id == app.user.id ? " (You)" : "" }}
+                                        </td>
+                                        <td>{{ user.email }}</td>
+                                        <td>{{ user.username }}</td>
+                                        <td>
+                                            {% if app.user.id != user.id %}
+                                                <a href="{{ path('user_update',{id:user.id}) }}" class="btn btn-success btn-xs">
+                                                    Edit
+                                                </a>
+                                                <a href="{{ path('user_delete',{id:user.id}) }}" class="btn btn-danger btn-xs">
+                                                    Delete
+                                                </a>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            {{ knp_pagination_render(users) }}
+                        {% else %}
+                            <div class="col-md-12">
+                                <div class="alert alert-info">
+                                    No users available.
+                                </div>
                             </div>
-                        </div>
-                    {% endif %}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 {% endblock %}

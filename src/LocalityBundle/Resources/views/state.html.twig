@@ -8,60 +8,65 @@
 {% block content %}
     <div class="row">
         <div class="col-md-4">
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">State Form</h3>
-                </div>
-                <div class="box-body">
-                    {{ form_start(form) }}
-                    {{ form_row(form.country) }}
-                    {{ form_row(form.name) }}
-                    <input type="submit" class="btn btn-primary" value="{{ isUpdating ? "Update" : "Create" }}">
-                    {{ form_end(form) }}
+            <div class="well">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">State Form</h3>
+                    </div>
+                    <div class="box-body">
+                        {{ form_start(form) }}
+                        {{ form_row(form.country) }}
+                        {{ form_row(form.name) }}
+                        <input type="submit" class="btn btn-primary" value="{{ isUpdating ? "Update" : "Create" }}">
+                        {{ form_end(form) }}
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-8">
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <h3 class="box-title">States List</h3>
-                </div>
-                <div class="box-body">
-                    {% if states | length %}
-                        <table class="table table-condensed table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <td>SN</td>
-                                <td>Name</td>
-                                <td>Country</td>
-                                <td>Actions</td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for s in states %}
+            <div class="well">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">States List</h3>
+                    </div>
+                    <div class="box-body">
+                        {% if states | length %}
+                            <table class="table table-condensed table-bordered table-hover">
+                                <thead>
                                 <tr>
-                                    <td>{{ loop.index }}</td>
-                                    <td>{{ s.name }}</td>
-                                    <td>{{ s.country ? s.country.name : 'N/A' }}</td>
-                                    <td>
-                                        <a href="{{ path('state_update',{id:s.id}) }}" class="btn btn-xs btn-primary">
-                                            Edit
-                                        </a>
-                                        <a href="{{ path('state_delete',{id:s.id}) }}"
-                                           class="btn btn-xs btn-danger delete-item">
-                                            Delete
-                                        </a>
-                                    </td>
+                                    <td>SN</td>
+                                    <td>Name</td>
+                                    <td>Country</td>
+                                    <td>Actions</td>
                                 </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    {% else %}
-                        <div class="alert alert-info">
-                            <p>No states available</p>
-                        </div>
-                    {% endif %}
+                                </thead>
+                                <tbody>
+                                {% for s in states %}
+                                    <tr>
+                                        <td>{{ loop.index }}</td>
+                                        <td>{{ s.name }}</td>
+                                        <td>{{ s.country ? s.country.name : 'N/A' }}</td>
+                                        <td>
+                                            <a href="{{ path('state_update',{id:s.id}) }}" class="btn btn-xs btn-primary">
+                                                Edit
+                                            </a>
+                                            <a href="{{ path('state_delete',{id:s.id}) }}"
+                                               class="btn btn-xs btn-danger delete-item">
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-info">
+                                <p>No states available</p>
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
