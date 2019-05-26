@@ -2,6 +2,8 @@
 
 namespace UserBundle\Form;
 
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -9,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use UserBundle\Entity\Group;
 
 class UserType extends AbstractType
 {
@@ -73,6 +76,17 @@ class UserType extends AbstractType
                     ]
                 ],
                 'invalid_message' => 'Password do not match.',
+            ])
+            ->add('groups', EntityType::class,[
+                'class' => Group::class,
+                'multiple' => true,
+                'expanded' => true,
+                'label' => 'User Groups',
+                'query_builder' => function(EntityRepository $e){
+                    return $e->createQueryBuilder('g')
+                        ->where('g.deleted = 0')
+                        ;
+                }
             ])
         ;
     }

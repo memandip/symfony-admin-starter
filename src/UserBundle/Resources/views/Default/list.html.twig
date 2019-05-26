@@ -32,10 +32,17 @@
                                         <td>{{ user.username }}</td>
                                         <td>
                                             {% if app.user.id != user.id %}
-                                                <a href="{{ path('user_update',{id:user.id}) }}" class="btn btn-success btn-xs">
+                                                <a href="{{ path('admin_dashboard', {'_switch_user':user.username}) }}"
+                                                   class="btn btn-info"
+                                                   title="Switch User">
+                                                    Switch User
+                                                </a>
+                                                <a href="{{ path('user_update',{id:user.id}) }}"
+                                                   class="btn btn-success btn-xs">
                                                     Edit
                                                 </a>
-                                                <a href="{{ path('user_delete',{id:user.id}) }}" class="btn btn-danger btn-xs">
+                                                <a href="{{ path('user_delete',{id:user.id}) }}"
+                                                   class="btn btn-danger btn-xs">
                                                     Delete
                                                 </a>
                                             {% endif %}

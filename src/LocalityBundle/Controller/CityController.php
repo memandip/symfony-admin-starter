@@ -4,6 +4,7 @@ namespace LocalityBundle\Controller;
 
 use LocalityBundle\Entity\City;
 use LocalityBundle\Form\CityType;
+use MainBundle\Annotations\Permissions;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,6 +23,9 @@ class CityController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @Route("/city", name="city_list")
      * @Route("/city/{id}/update", name="city_update")
+     * @Permissions("list_cities", group="city",desc="list all cities")
+     * @Permissions("create_city", group="city",desc="create city")
+     * @Permissions("update_cities", group="city",desc="update city")
      */
     public function listAction(Request $request){
         $id = $request->get('id');
@@ -69,6 +73,7 @@ class CityController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @Route("/city/{id}/delete", name="city_delete")
+     * @Permissions("delete_city", group="city",desc="Delete city")
      */
     public function deleteAction(Request $request){
         $id = $request->get('id');

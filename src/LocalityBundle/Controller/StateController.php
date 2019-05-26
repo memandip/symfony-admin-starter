@@ -4,6 +4,7 @@ namespace LocalityBundle\Controller;
 
 use LocalityBundle\Entity\State;
 use LocalityBundle\Form\StateType;
+use MainBundle\Annotations\Permissions;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,6 +23,9 @@ class StateController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @Route("/states",name="state_list")
      * @Route("/state/{id}/update", name="state_update")
+     * @Permissions("list_states", group="state",desc="list all states")
+     * @Permissions("create_state", group="state",desc="create state")
+     * @Permissions("update_state", group="state",desc="update state")
      */
     public function listAction(Request $request){
         $id = $request->get('id');
@@ -69,6 +73,7 @@ class StateController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @Route("/state/{id}/delete", name="state_delete")
+     * @Permissions("delete_state", group="state", desc="Delete state")
      */
     public function deleteAction(Request $request){
         $id = $request->get('id');

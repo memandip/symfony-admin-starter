@@ -2,8 +2,11 @@
 
 namespace UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\GroupInterface;
 use FOS\UserBundle\Model\User as BaseUser;
+use UserBundle\Entity\Group;
 
 /**
  * User
@@ -33,6 +36,17 @@ class User extends BaseUser
      * @ORM\Column(name="last_name", type="string", nullable=true)
      */
     protected $lastName;
+
+    /**
+     * @var ArrayCollection|Group[]
+     *
+     * @ORM\ManyToMany(targetEntity="UserBundle\Entity\Group", inversedBy="users", cascade={"persist" ,"remove"})
+     * @ORM\JoinTable(name="user_groups_relation",
+     *      joinColumns={ @ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={ @ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     * )
+     */
+    protected $groups;
 
     public function __construct()
     {
@@ -87,6 +101,52 @@ class User extends BaseUser
      */
     public function getFullName(){
         return $this->firstName . " ". $this->lastName;
+    }
+
+    /**
+     * @return ArrayCollection|Group[]
+     */
+    public function getGroups()
+    {
+        return $this->groups;
+    }
+
+    /**
+     * @param ArrayCollection|Group[] $groups
+     */
+    public function setGroups($groups)
+    {
+        $this->groups = $groups;
+    }
+
+    /**
+     * @param GroupInterface $userGroup
+     *
+     * @return $this
+     */
+    public function addGroup(GroupInterface $userGroup)
+    {
+        if (!$this->getGroups()->contains($userGroup)) {
+            $this->getGroups()->add($userGroup);
+            $userGroup->addUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param GroupInterface $userGroup
+     *
+     * @return $this
+     */
+    public function removeGroup(GroupInterface $userGroup)
+    {
+        if ($this->getGroups()->contains($userGroup)) {
+            $this->getGroups()->removeElement($userGroup);
+            $userGroup->removeUser($this);
+        }
+
+        return $this;
     }
 
 }

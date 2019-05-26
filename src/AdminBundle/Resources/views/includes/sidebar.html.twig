@@ -41,7 +41,7 @@
                     </li>
                     <!-- /main -->
                     {% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
-                        <li class="treeview  {% if routeName == "users_list" or routeName == "user_create" %} active {% endif %}">
+                        <li class="treeview  {% if routeName == "users_list" or routeName == "user_create" or routeName == 'user_group_list' %} active {% endif %}">
                             <a href="#">
                                 <i class="icon icon-user"></i> <span>User</span>
                                 <span class="pull-right-container">
@@ -54,6 +54,11 @@
                                 </li>
                                 <li {% if routeName == "user_create" %} class="active" {% endif %}>
                                     <a href="{{ path('user_create') }}"><i class="fa fa-circle-o"></i> Create</a>
+                                </li>
+                                <li {% if routeName == 'user_group_list' %} class="active" {% endif %}>
+                                    <a href="{{ path('user_group_list') }}">
+                                        <i class="fa fa-circle-o"></i> User Groups
+                                    </a>
                                 </li>
                             </ul>
                         </li>

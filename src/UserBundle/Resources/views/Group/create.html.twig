@@ -1,0 +1,80 @@
+{% extends '@Admin/layout.html.twig' %}
+
+{% block page_title %}Add User Group{% endblock %}
+
+{% block action_buttons %}{% endblock %}
+
+{% form_theme form "bootstrap_3_layout.html.twig" %}
+
+{% block content %}
+
+    <div class="col-xs-12">
+        <div class="panel panel-flat">
+
+            <div class="panel-body">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            {{ form_label(form.name) }}
+                            {{ form_widget(form.name) }}
+                            {{ form_errors(form.name) }}
+                        </div>
+                        <div class="col-xs-4">
+                            {{ form_label(form.displayName) }}
+                            {{ form_widget(form.displayName) }}
+                            {{ form_errors(form.displayName) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {{ form_label(form.description) }}
+                            {{ form_widget(form.description) }}
+                            {{ form_errors(form.description) }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label class="control-label text-bold">Permissions <cite class="text-muted">(Check on permissions listed below)</cite></label>
+                            <div id="yarsha-permissions"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="col-xs-12">
+                    <input type="submit" class="btn btn-primary" value="SAVE">
+                </div>
+
+                <div class="clearfix"></div>
+                {{ form_end(form) }}
+            </div>
+
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ asset('assets/js/permission.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+
+            var options = {
+                data: '{{ permissions|json_encode|raw }}'
+            };
+
+            var permission = $('#yarsha-permissions').permissionList(options);
+
+        });
+    </script>
+{% endblock %}

@@ -4,9 +4,9 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
-        ROLE_EMPLOYER: ROLE_USER
         ROLE_STUDENT: ROLE_STUDENT
+        ROLE_EMPLOYER: ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         fos_userbundle:
@@ -22,6 +22,8 @@ security:
 
             logout:       true
             anonymous:    true
+            switch_user:
+                provider: fos_userbundle
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }

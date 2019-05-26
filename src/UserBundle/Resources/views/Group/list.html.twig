@@ -1,0 +1,85 @@
+{% extends '@Admin/layout.html.twig' %}
+
+{% block action_buttons %}
+    <li>
+        {{ float_button(path('ys_admin_user_group_add'), 'Add User Group', 'icon-plus3', 'user_group_create' ) }}
+    </li>
+{% endblock %}
+
+{% block content %}
+    <div class="well">
+        {% if groups|length %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Display Name</th>
+                    <th>Description</th>
+                    <th><i class="icon-cog2" title="actions"></i></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for group in groups %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ group.name }}</td>
+                        <td>{{ group.displayName }}</td>
+                        <td>{{ group.description }}</td>
+                        <td>
+                            <ul class="icons-list">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-cog3"></i>
+                                        <i class="icon-arrow-down5"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        {% if has_access('user_group_manage') %}
+                                            <li>
+                                                <a href="{{ path('user_group_update', {'id':group.id}) }}"
+                                                   id="editGroup" >
+                                                    <i class="fa fa-pencil"></i> Edit
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                        {% if has_access('user_group_delete') %}
+                                            <li>
+                                                <a href="{{ path('user_group_delete', {'id':group.id}) }}"
+                                                   class="deleteGroup">
+                                                    <i class="icon-cross2"></i> Delete
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            {{ no_contents('No user groups to list') }}
+        {% endif %}
+    </div>
+
+    <div class="clearfix"></div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        $('.deleteGroup').on('click', function () {
+            console.log('delete');
+            return confirm('Are you sure?');
+        });
+    </script>
+
+{% endblock scripts %}
+
+
+
+
+
+
+

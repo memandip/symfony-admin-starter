@@ -2,6 +2,7 @@
 
 namespace MediaBundle\Controller;
 
+use MainBundle\Annotations\Permissions;
 use MediaBundle\Entity\MediaFile;
 use MediaBundle\Form\MediaFileType;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
- * Class DefaultController
+ * Class UserController
  * @package UploaderBundle\Controller
  * @Route("/media")
  * @Breadcrumb("Media")
@@ -20,6 +21,7 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="media_files_list")
+     * @Permissions("list_medias", group="media", desc="List all media files")
      */
     public function indexAction()
     {
@@ -31,6 +33,7 @@ class DefaultController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @Route("/{id}/delete", name="media_file_delete")
+     * @Permissions("delete_media", group="media",desc="Delete Media files")
      */
     public function deleteAction(Request $request)
     {
@@ -54,6 +57,8 @@ class DefaultController extends Controller
      * @param Request $request
      * @return JsonResponse|\Symfony\Component\HttpFoundation\RedirectResponse
      * @Route("/{id}/update", name="media_file_update")
+     * @Permissions("create_media", group="media", desc="Create media")
+     * @Permissions("update_media", group="media", desc="Update media")
      */
     public function updateAction(Request $request)
     {

@@ -4,6 +4,7 @@ namespace LocalityBundle\Controller;
 
 use LocalityBundle\Entity\Country;
 use LocalityBundle\Form\CountryType;
+use MainBundle\Annotations\Permissions;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,6 +23,9 @@ class CountryController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @Route("/country", name="country_list")
      * @Route("/country/{id}/update", name="country_update")
+     * @Permissions("list_countries", group="country",desc="list all countries")
+     * @Permissions("create_countries", group="country",desc="create country")
+     * @Permissions("update_countries", group="country",desc="update country")
      */
     public function listAction(Request $request){
         $id = $request->get('id');
@@ -73,6 +77,7 @@ class CountryController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @Route("/country/{id}/delete", name="country_delete")
+     * @Permissions("delete_country", group="country", desc="Delete Country")
      */
     public function deleteAction(Request $request){
         $id = $request->get('id');

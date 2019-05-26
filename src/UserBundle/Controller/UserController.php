@@ -2,6 +2,7 @@
 
 namespace UserBundle\Controller;
 
+use MainBundle\Annotations\Permissions;
 use Symfony\Component\HttpFoundation\Request;
 use APY\BreadcrumbTrailBundle\Annotation\Breadcrumb;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -9,8 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use UserBundle\Entity\User;
 use UserBundle\Form\UserType;
 
-
-class DefaultController extends Controller
+class UserController extends Controller
 {
 
     /**
@@ -53,6 +53,7 @@ class DefaultController extends Controller
      * @Route("/users", name="users_list")
      * @Breadcrumb("User")
      * @Breadcrumb("List")
+     * @Permissions("list_users", group="user", desc="List all users")
      */
     public function userListAction(Request $request){
         $this->denyAccessUnlessGranted('ROLE_SUPER_ADMIN');
@@ -69,6 +70,8 @@ class DefaultController extends Controller
      * @Route("/user/create", name="user_create")
      * @Route("/user/{id}/update", name="user_update")
      * @Breadcrumb("User", routeName="users_list")
+     * @Permissions("create_user", group="user", desc="Create new user", parent="list_users")
+     * @Permissions("update_user", group="user", desc="Update existing user", parent="list_users")
      */
     public function createAction(Request $request){
         $id = $request->get('id');
@@ -117,6 +120,7 @@ class DefaultController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @Route("/user/{id}/delete", name="user_delete")
+     * @Permissions("delete_user", group="user", desc="Delete user")
      */
     public function deleteAction(Request $request){
         $this->denyAccessUnlessGranted('ROLE_SUPER_ADMIN');

@@ -46,6 +46,23 @@
 
 {% include '@Admin/includes/header.html.twig' %}
 
+<!-- Second navbar -->
+<div class="navbar navbar-default" id="navbar-second">
+    {{ apy_breadcrumb_trail_render() }}
+    <ul class="breadcrumb action-buttons pull-right">
+        {% block action_buttons %} {% endblock %}
+    </ul>
+    <ul class="nav navbar-nav no-border visible-xs-block">
+        <li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i
+                        class="icon-menu7"></i></a></li>
+    </ul>
+
+    <div class="navbar-collapse collapse" id="navbar-second-toggle">
+
+    </div>
+</div>
+<!-- /second navbar -->
+
 <!-- Page header -->
 <div class="page-header">
     <div class="page-header-content">
@@ -62,25 +79,27 @@
 <!-- /page header -->
 
 
+<div class="col-md-12">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-error">
+            {{ message }}
+        </div>
+    {% endfor %}
+</div>
+
 <!-- Page container -->
 <div class="page-container">
 
     <!-- Page content -->
     <div class="page-content">
 
-        <div class="row">
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success">
-                    {{ message }}
-                </div>
-            {% endfor %}
-
-            {% for message in app.flashes('error') %}
-                <div class="alert alert-error">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div>
+        <div class="clearfix"></div>
 
         <!-- Main sidebar -->
         {% include '@Admin/includes/sidebar.html.twig' %}
@@ -93,6 +112,20 @@
             {% endblock %}
         </div>
         <!-- /main content -->
+
+        {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+            <div class="row">
+                <div class="col-xs-12 flashDiv switchInfo" style="position: fixed;bottom: -20px;left: 0;z-index: 99;padding: 0;width: 100%;">
+                    <div class="alert alert-warning alert-styled-left alert-arrow-left alert-bordered">
+                        <p>
+                            You are using this portal as <b>{{ app.user }}</b>.
+                            Click <a href="{{ path(impersonator_user_list_path(), {'_switch_user': '_exit'}) }}">here</a>
+                            to switch back. &nbsp;
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
 
     </div>
     <!-- /page content -->
