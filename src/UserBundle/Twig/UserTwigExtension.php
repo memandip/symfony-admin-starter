@@ -1,5 +1,5 @@
 <?php
-namespace YarshaStudio\UserBundle\Twig;
+namespace UserBundle\Twig;
 
 
 use Doctrine\ORM\EntityManager;
@@ -10,7 +10,7 @@ use UserBundle\Service\UserService;
 
 /**
  * Class UserTwigExtension
- * @package YarshaStudio\VehicleManagementBundle\Twig
+ * @package UserBundle\Twig
  *
  * @DI\Service("twig.user_extension")
  * @DI\Tag(name="twig.extension")
