@@ -77,7 +77,7 @@ class UserType extends AbstractType
                 ],
                 'invalid_message' => 'Password do not match.',
             ])
-            ->add('groups', EntityType::class,[
+            ->add('userGroups', EntityType::class,[
                 'class' => Group::class,
                 'multiple' => true,
                 'expanded' => true,

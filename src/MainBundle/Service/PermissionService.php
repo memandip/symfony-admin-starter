@@ -219,7 +219,7 @@ class PermissionService
 
     public function getPermissionsByUser(User $user)
     {
-        $groups = $user->getGroups();
+        $groups = $user->getUserGroups();
 
         $permissions = [];
 

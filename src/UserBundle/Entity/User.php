@@ -45,7 +45,7 @@ class User extends BaseUser
      *      inverseJoinColumns={ @ORM\JoinColumn(name="group_id", referencedColumnName="id")}
      * )
      */
-    protected $groups;
+    protected $userGroups;
 
     public function __construct()
     {
@@ -105,17 +105,17 @@ class User extends BaseUser
     /**
      * @return ArrayCollection|Group[]
      */
-    public function getGroups()
+    public function getUserGroups()
     {
-        return $this->groups;
+        return $this->userGroups;
     }
 
     /**
-     * @param ArrayCollection|Group[] $groups
+     * @param ArrayCollection|Group[] $userGroups
      */
-    public function setGroups($groups)
+    public function setUserGroups($userGroups)
     {
-        $this->groups = $groups;
+        $this->userGroups = $userGroups;
     }
 
     /**
@@ -125,8 +125,8 @@ class User extends BaseUser
      */
     public function addGroup(GroupInterface $userGroup)
     {
-        if (!$this->getGroups()->contains($userGroup)) {
-            $this->getGroups()->add($userGroup);
+        if (!$this->getUserGroups()->contains($userGroup)) {
+            $this->getUserGroups()->add($userGroup);
             $userGroup->addUser($this);
         }
 
@@ -140,8 +140,8 @@ class User extends BaseUser
      */
     public function removeGroup(GroupInterface $userGroup)
     {
-        if ($this->getGroups()->contains($userGroup)) {
-            $this->getGroups()->removeElement($userGroup);
+        if ($this->getUserGroups()->contains($userGroup)) {
+            $this->getUserGroups()->removeElement($userGroup);
             $userGroup->removeUser($this);
         }
 
