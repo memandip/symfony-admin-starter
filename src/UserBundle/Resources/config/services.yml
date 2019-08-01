@@ -1,4 +1,4 @@
 services:
-#    smart_receipt_user.example:
-#        class: UserBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+#       UserBundle\DataFixtures\ORM\:
+#       resource: '../../src/UserBundle/DataFixtures/ORM'
+#       tags: [doctrine.fixture.orm]
