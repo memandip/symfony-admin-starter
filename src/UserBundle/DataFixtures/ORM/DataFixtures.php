@@ -3,8 +3,6 @@ namespace UserBundle\DataFixtures\ORM;
 
 use UserBundle\Entity\TestUser;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\AbstractFixture;
-use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 class DataFixtures extends Fixture
