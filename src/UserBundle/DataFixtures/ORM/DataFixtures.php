@@ -21,3 +21,4 @@ class DataFixtures extends Fixture
         $manager->flush();
     }
 }
+//https://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html#using-the-container-in-the-fixtures
