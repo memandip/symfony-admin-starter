@@ -1,3 +1,1 @@
-# tms
-
-* TMS admin
+# Symfony admin starter
