@@ -1,3 +1,8 @@
+uploader:
+    resource: "@MediaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 #main:
 #    resource: "@MainBundle/Controller/"
 #    type:     annotation
@@ -20,3 +25,7 @@ user_bundle:
     resource: "@UserBundle/Controller/"
     type:     annotation
     prefix:   /
+
+oneup_uploader:
+    resource: .
+    type: uploader

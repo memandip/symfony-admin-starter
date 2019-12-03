@@ -25,6 +25,7 @@
     "require": {
         "php": ">=5.5.9",
         "apy/breadcrumbtrail-bundle": "^1.5",
+        "dmishh/settings-bundle": "2.0.*@dev",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
         "friendsofsymfony/ckeditor-bundle": "^2.0",
@@ -32,6 +33,7 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "jms/di-extra-bundle": "^1.9",
         "knplabs/knp-paginator-bundle": "^2.8",
+        "oneup/uploader-bundle": "^2.1",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^5.0.0",
         "stof/doctrine-extensions-bundle": "^1.3",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e03b602db9910bca876ded366b1e67c8",
+    "content-hash": "db56573cf2f7b57f256239fc117475d2",
     "packages": [
         {
             "name": "apy/breadcrumbtrail-bundle",
@@ -154,6 +154,77 @@
                 "tls"
             ],
             "time": "2019-01-28T09:30:10+00:00"
+        },
+        {
+            "name": "dmishh/settings-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dmishh/SettingsBundle.git",
+                "reference": "0ee48b015691694a8dcbd3ee654d33386e7bf478"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dmishh/SettingsBundle/zipball/0ee48b015691694a8dcbd3ee654d33386e7bf478",
+                "reference": "0ee48b015691694a8dcbd3ee654d33386e7bf478",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/orm": "^2.2.3",
+                "php": "^5.5.9|^7.0",
+                "psr/cache": "^1.0",
+                "symfony/form": "^2.7|^3.0",
+                "symfony/framework-bundle": "^2.7|^3.0"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "~1.2",
+                "matthiasnoback/symfony-dependency-injection-test": "^0.7",
+                "mockery/mockery": "^0.9",
+                "phpunit/phpunit": "^4.6",
+                "polishsymfonycommunity/symfony-mocker-container": "^1.0"
+            },
+            "suggest": {
+                "cache/adapter-bundle": "This bundle will help you to add your PSR-6 cache implementations as Symfony services"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dmishh\\SettingsBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dmitriy Scherbina",
+                    "homepage": "http://dmishh.com"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Richard van Laak",
+                    "homepage": "https://github.com/rvanlaak"
+                }
+            ],
+            "description": "Database centric Symfony configuration management. Global and per-user settings supported.",
+            "homepage": "https://github.com/dmishh/SettingsBundle",
+            "keywords": [
+                "Settings",
+                "bundle",
+                "config",
+                "configuration",
+                "symfony"
+            ],
+            "time": "2017-09-16T13:30:38+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -2015,6 +2086,90 @@
             "time": "2018-11-05T09:00:11+00:00"
         },
         {
+            "name": "oneup/uploader-bundle",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/1up-lab/OneupUploaderBundle.git",
+                "reference": "fa28731786627e4378a205e6c2a265c404e19204"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/1up-lab/OneupUploaderBundle/zipball/fa28731786627e4378a205e6c2a265c404e19204",
+                "reference": "fa28731786627e4378a205e6c2a265c404e19204",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "symfony/asset": "^3.0|^4.0",
+                "symfony/finder": "^3.0|^4.0",
+                "symfony/framework-bundle": "^3.0|^4.0",
+                "symfony/templating": "^3.0|^4.0",
+                "symfony/translation": "^3.0|^4.0",
+                "symfony/yaml": "^3.0|^4.0"
+            },
+            "require-dev": {
+                "amazonwebservices/aws-sdk-for-php": "1.5.*",
+                "knplabs/gaufrette": "0.2.*@dev",
+                "oneup/flysystem-bundle": "^1.2|^2.0|^3.0",
+                "phpunit/phpunit": "^6.5",
+                "sensio/framework-extra-bundle": "^5.0",
+                "symfony/browser-kit": "^3.0|^4.0",
+                "symfony/class-loader": "^3.0|^4.0",
+                "symfony/security-bundle": "^3.0|^4.0",
+                "symfony/var-dumper": "^3.0|^4.0",
+                "twistor/flysystem-stream-wrapper": "^1.0"
+            },
+            "suggest": {
+                "knplabs/knp-gaufrette-bundle": "0.1.*",
+                "oneup/flysystem-bundle": "^3.0",
+                "twistor/flysystem-stream-wrapper": "^1.0 (Required when using Flysystem)"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Oneup\\UploaderBundle\\": ""
+                },
+                "classmap": [
+                    "Tests/App/AppKernel.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Schmid",
+                    "email": "js@1up.io",
+                    "homepage": "http://1up.io",
+                    "role": "Developer"
+                },
+                {
+                    "name": "David Greminger",
+                    "email": "dg@1up.io",
+                    "homepage": "http://1up.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Handles multi file uploads in Symfony2. Features included: Chunked upload, Orphans management, Gaufrette support.",
+            "homepage": "http://1up.io",
+            "keywords": [
+                "FancyUpload",
+                "FineUploader",
+                "MooUpload",
+                "Uploadify",
+                "YUI3 Uploader",
+                "blueimp",
+                "dropzone",
+                "fileupload",
+                "jQuery File Uploader",
+                "plupload",
+                "upload"
+            ],
+            "time": "2018-12-03T08:32:12+00:00"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v2.0.18",
             "source": {
@@ -3457,7 +3612,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "dmishh/settings-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
