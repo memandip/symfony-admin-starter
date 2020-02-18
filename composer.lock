@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "db56573cf2f7b57f256239fc117475d2",
@@ -2087,16 +2087,16 @@
         },
         {
             "name": "oneup/uploader-bundle",
-            "version": "2.1.1",
+            "version": "2.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/1up-lab/OneupUploaderBundle.git",
-                "reference": "fa28731786627e4378a205e6c2a265c404e19204"
+                "reference": "a6011449b716f163fe1ae323053077e59212350c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/1up-lab/OneupUploaderBundle/zipball/fa28731786627e4378a205e6c2a265c404e19204",
-                "reference": "fa28731786627e4378a205e6c2a265c404e19204",
+                "url": "https://api.github.com/repos/1up-lab/OneupUploaderBundle/zipball/a6011449b716f163fe1ae323053077e59212350c",
+                "reference": "a6011449b716f163fe1ae323053077e59212350c",
                 "shasum": ""
             },
             "require": {
@@ -2167,7 +2167,7 @@
                 "plupload",
                 "upload"
             ],
-            "time": "2018-12-03T08:32:12+00:00"
+            "time": "2020-02-04T10:37:36+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -2909,7 +2909,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -3541,6 +3541,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
+            "abandoned": "symfony/maker-bundle",
             "time": "2017-12-07T15:36:41+00:00"
         },
         {
