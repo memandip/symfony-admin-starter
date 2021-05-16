@@ -19,3 +19,4 @@
 /vendor/
 /web/bundles/
 /web/uploads
+.phpunit.result.cache
